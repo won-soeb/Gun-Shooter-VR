@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: MachineGun
   damage: 1
-  ammo: 100
-  currentAmmo: 100
+  maxAmmo: 100
+  currentAmmo: 0

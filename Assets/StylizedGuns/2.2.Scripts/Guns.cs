@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ShootControl : MonoBehaviour
+public class Guns : MonoBehaviour
 {
     public string bulletType;
     public Transform shootPoint;

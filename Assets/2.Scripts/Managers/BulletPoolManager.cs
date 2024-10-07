@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletPoolManager : MonoBehaviour
+public class BulletPoolManager : SingletonManager<BulletPoolManager>
 {
     [System.Serializable]
     public struct BulletPool
@@ -15,19 +15,8 @@ public class BulletPoolManager : MonoBehaviour
 
     private Dictionary<string, Queue<GameObject>> poolDictionary;
 
-    public static BulletPoolManager Instance;
-
-    private void Awake()
+    private void Start()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
         foreach (BulletPool pool in bulletPools)

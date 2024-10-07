@@ -42,23 +42,28 @@ public class Player : MonoBehaviour
                         break;
                     case Item.ItemType.Pistol:
                         audioSource.PlayOneShot(clip[0]);
-                        gunData[0].currentAmmo = gunData[0].ammo;
+                        gunData[0].currentAmmo = gunData[0].maxAmmo;
                         GameManager.Instance.UpdateAmmo(0);
                         break;
                     case Item.ItemType.ShotGun:
                         audioSource.PlayOneShot(clip[0]);
-                        gunData[1].currentAmmo = gunData[1].ammo;
+                        gunData[1].currentAmmo = gunData[1].maxAmmo;
                         GameManager.Instance.UpdateAmmo(1);
                         break;
                     case Item.ItemType.MachineGun:
                         audioSource.PlayOneShot(clip[0]);
-                        gunData[2].currentAmmo = gunData[2].ammo;
+                        gunData[2].currentAmmo = gunData[2].maxAmmo;
                         GameManager.Instance.UpdateAmmo(2);
                         break;
                 }
                 Destroy(other.gameObject);
             }
         };
+        //게임 시작 시 탄환 수 리셋
+        foreach (GunData data in gunData)
+        {
+            data.currentAmmo = data.maxAmmo;
+        }
     }
     public void Damage(float damage)
     {
@@ -87,7 +92,7 @@ public class Player : MonoBehaviour
         if (OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger) || Input.GetKeyDown(KeyCode.R))
         {
             Debug.Log("Reload!");
-            gunData[weaponNum].currentAmmo = gunData[weaponNum].ammo;
+            gunData[weaponNum].currentAmmo = gunData[weaponNum].maxAmmo;
         }
     }
 

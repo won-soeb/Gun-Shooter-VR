@@ -1,18 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterPoolManager : MonoBehaviour
+public class MonsterPoolManager : SingletonManager<MonsterPoolManager>
 {
     public GameObject monsterObject;//풀링할 오브젝트
     public int poolSize = 0;//미리 생성할 개수
     private GameObject poolObjs;//큐에 넣을 오브젝트
     public Queue<GameObject> poolQueue = new Queue<GameObject>();//큐 - 넣은 순서대로 꺼내야 함
 
-    public static MonsterPoolManager Instance = new MonsterPoolManager();
-    private void Awake()
-    {
-        Instance = this;
-    }
     private void Start()
     {
         //풀링할 오브젝트를 미리 생성 후 비활성화-큐에 넣음

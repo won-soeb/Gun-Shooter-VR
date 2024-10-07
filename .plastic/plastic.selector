@@ -1,0 +1,4 @@
+repository "Gun Shooter VR@wsinp431@cloud"
+  path "/"
+    br "/main"
+    co "/main"

@@ -5,6 +5,6 @@ public class GunData : ScriptableObject
 {
     public string gunName;
     public float damage;
-    public int ammo;
+    public int maxAmmo;
     public int currentAmmo;
 }

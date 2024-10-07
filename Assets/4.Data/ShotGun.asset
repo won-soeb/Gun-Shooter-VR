@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: ShotGun
   damage: 2
-  ammo: 40
-  currentAmmo: 40
+  maxAmmo: 40
+  currentAmmo: 0

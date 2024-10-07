@@ -3252,11 +3252,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 20000010189485334, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 4294967263
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 20000012175207052, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 4294967263
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 114473266101150724, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
       propertyPath: opMode
@@ -9037,6 +9037,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuUI
       objectReference: {fileID: 0}
+    - target: {fileID: 6284616999526408222, guid: e2f3fe41c747a824d90a8283458eb0ee, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6979470482685754642, guid: e2f3fe41c747a824d90a8283458eb0ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.98
@@ -9081,6 +9085,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 416445112}
+    - target: {fileID: 8939818179064069331, guid: e2f3fe41c747a824d90a8283458eb0ee, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9462,6 +9470,10 @@ PrefabInstance:
       propertyPath: bestScoreText
       value: 
       objectReference: {fileID: 1188982087}
+    - target: {fileID: 8460368819875685502, guid: 8791745368e7a2c499b66f425d4afa2f, type: 3}
+      propertyPath: flymonsterAttack
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8460368819875685502, guid: 8791745368e7a2c499b66f425d4afa2f, type: 3}
       propertyPath: guns.Array.data[0]
       value: 

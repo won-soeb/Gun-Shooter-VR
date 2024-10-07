@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunName: Pistol
   damage: 3
-  ammo: 20
-  currentAmmo: 20
+  maxAmmo: 20
+  currentAmmo: 0

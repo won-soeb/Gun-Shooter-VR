@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonManager<GameManager>
 {
     public GameObject player;
     public GameObject playUI, scoreUI, optionUI;
@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     public Text weapon, ammo, scoreText, bestScoreText;
     public Button retryButton, quitButton;
     public int score = 0, bestScore = 0;
-    public GunData[] gunData;
     public float skeletonHp = 5, skeletonAttack = 0f;
     public float flymonsterMaxHp = 10;
     public float flymonsterAttack = 5f;
@@ -24,25 +23,16 @@ public class GameManager : MonoBehaviour
     private bool isPlayerDead = false;
     private int checkScore = 0;
 
-    public static GameManager Instance = new GameManager();
-    private void Awake()
+    private void Start()
     {
-        Instance = this;
         //최고점수 불러오기
         if (PlayerPrefs.HasKey("BestScore"))
         {
             bestScore = PlayerPrefs.GetInt("BestScore");
         }
-        //게임 시작 시 탄환 수 리셋
-        foreach (GunData data in gunData)
-        {
-            data.currentAmmo = data.ammo;
-        }
         //Option창을 활성화하여 시간이 정지되었을 수 있으므로 재설정
         Time.timeScale = 1f;
-    }
-    private void Start()
-    {
+
         scoreUI.SetActive(false);
         loadingGauge.gameObject.SetActive(false);
         retryButton.onClick.AddListener(() =>
@@ -67,33 +57,12 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateWeaponName(int weapon)
     {
-        switch (weapon)
-        {
-            case 0:
-                this.weapon.text = gunData[0].gunName;
-                break;
-            case 1:
-                this.weapon.text = gunData[1].gunName;
-                break;
-            case 2:
-                this.weapon.text = gunData[2].gunName;
-                break;
-        }
+        this.weapon.text = player.GetComponent<Player>().gunData[weapon].gunName;
     }
     public void UpdateAmmo(int ammo)
     {
-        switch (ammo)
-        {
-            case 0:
-                this.ammo.text = string.Format("{0}/{1}", gunData[0].currentAmmo, gunData[0].ammo);
-                break;
-            case 1:
-                this.ammo.text = string.Format("{0}/{1}", gunData[1].currentAmmo, gunData[1].ammo);
-                break;
-            case 2:
-                this.ammo.text = string.Format("{0}/{1}", gunData[2].currentAmmo, gunData[2].ammo);
-                break;
-        }
+        GunData ammoData = player.GetComponent<Player>().gunData[ammo];
+        this.ammo.text = string.Format("{0}/{1}", ammoData.currentAmmo, ammoData.maxAmmo);
     }
     public void UpdateScore(int score)
     {
