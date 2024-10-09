@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class FlyMonster : MonoBehaviour, IMonster
+public class FlyMonster : Monster
 {
     Animator anim;
     Player player;
@@ -135,7 +135,7 @@ public class FlyMonster : MonoBehaviour, IMonster
             StartCoroutine(StartTakeOff(0.1f));
         }
     }
-    public void Attack(bool isAttack)
+    public override void Attack(bool isAttack)
     {
         //Debug.Log("몬스터 공격");
         if (animationName == "Fly" || animationName == "FlyingBiteAttack")
@@ -148,7 +148,7 @@ public class FlyMonster : MonoBehaviour, IMonster
             anim.SetBool("Attack" + num, isAttack);
         }
     }
-    public void Damage(float damage)
+    public override void Damage(float damage)
     {
         hp -= damage;
         if (hp <= 0)
@@ -170,7 +170,7 @@ public class FlyMonster : MonoBehaviour, IMonster
             }
         }
     }
-    public void Die()
+    public override void Die()
     {
         PlaySound(3);
         //Debug.Log("몬스터 처치");

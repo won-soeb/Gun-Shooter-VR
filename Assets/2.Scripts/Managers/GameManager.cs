@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager : SingletonManager<GameManager>
+public class GameManager : MonoBehaviour
 {
     public GameObject player;
     public GameObject playUI, scoreUI, optionUI;
@@ -23,6 +23,18 @@ public class GameManager : SingletonManager<GameManager>
     private bool isPlayerDead = false;
     private int checkScore = 0;
 
+    public static GameManager Instance = new GameManager();
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         //최고점수 불러오기

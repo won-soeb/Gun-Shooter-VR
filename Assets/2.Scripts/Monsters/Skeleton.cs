@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Skeleton : MonoBehaviour, IMonster
+public class Skeleton : Monster
 {
     public Animator anim;
     private Player player;
@@ -89,13 +89,13 @@ public class Skeleton : MonoBehaviour, IMonster
             Damage(player.PlayerAttack);
         }
     }
-    public void Attack(bool isAttack)
+    public override void Attack(bool isAttack)
     {
         if (isDead) return;
         //Debug.Log("몬스터 공격");
         anim.SetBool("Attack", isAttack);
     }
-    public void Damage(float damage)
+    public override void Damage(float damage)
     {
         hp -= damage;
         if (hp <= 0)
@@ -113,7 +113,7 @@ public class Skeleton : MonoBehaviour, IMonster
             anim.SetTrigger("Hit");
         }
     }
-    public void Die()
+    public override void Die()
     {
         if (isDead) return;
 
